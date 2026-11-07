@@ -78,13 +78,13 @@ if DATABASE_URL and DATABASE_URL.startswith('postgres'):
         }
     }
 else:
-    # Fallback to local SQLite database in /data or /tmp on serverless
-    db_dir = Path('/tmp') if os.getenv('VERCEL') else (BASE_DIR.parent / 'data')
+    # Connect directly to relational SQLite database multischool.sqlite in /data or /tmp on Vercel
+    db_dir = Path('/tmp/academiq_data') if os.getenv('VERCEL') else (BASE_DIR.parent / 'data')
     db_dir.mkdir(parents=True, exist_ok=True)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': db_dir / 'academiq_django.sqlite3',
+            'NAME': db_dir / 'multischool.sqlite',
         }
     }
 

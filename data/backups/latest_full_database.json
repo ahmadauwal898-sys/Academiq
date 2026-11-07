@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-07T09:46:28.320Z",
+  "timestamp": "2026-11-07T13:29:58.495Z",
   "version": "1.0.0",
   "schools": [
     {
@@ -19,7 +19,7 @@
       "created_at": "2026-10-22 23:31:11",
       "updated_at": "2026-10-22 23:31:11",
       "is_payment_verified": 1,
-      "payment_verified_at": "2026-11-07 09:46:28",
+      "payment_verified_at": "2026-11-07 13:29:58",
       "payment_code_used": "ACAD-SEED-VERIFIED"
     },
     {
@@ -39,7 +39,7 @@
       "created_at": "2026-10-22 23:31:11",
       "updated_at": "2026-10-22 23:31:11",
       "is_payment_verified": 1,
-      "payment_verified_at": "2026-11-07 09:46:28",
+      "payment_verified_at": "2026-11-07 13:29:58",
       "payment_code_used": "ACAD-SEED-VERIFIED"
     },
     {

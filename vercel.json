@@ -4,26 +4,55 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     },
     {
-      "source": "/sw.js",
-      "destination": "/sw.js"
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.py"
     },
     {
-      "source": "/manifest.webmanifest",
-      "destination": "/manifest.webmanifest"
+      "src": "/sw.js",
+      "dest": "/sw.js",
+      "headers": {
+        "content-type": "application/javascript; charset=utf-8",
+        "service-worker-allowed": "/",
+        "cache-control": "no-cache, no-store, must-revalidate"
+      }
     },
     {
-      "source": "/manifest.json",
-      "destination": "/manifest.json"
+      "src": "/manifest.webmanifest",
+      "dest": "/manifest.webmanifest",
+      "headers": {
+        "content-type": "application/manifest+json; charset=utf-8",
+        "access-control-allow-origin": "*"
+      }
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/manifest.json",
+      "dest": "/manifest.json",
+      "headers": {
+        "content-type": "application/manifest+json; charset=utf-8",
+        "access-control-allow-origin": "*"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
